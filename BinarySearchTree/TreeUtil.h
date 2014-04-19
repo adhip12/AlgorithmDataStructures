@@ -5,6 +5,7 @@
 typedef enum bool {
 	FALSE = 0,
 	TRUE,
+	EQUAL,
 	INVALID_DATA_SIZE
 }Bool;
 

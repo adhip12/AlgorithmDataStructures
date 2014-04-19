@@ -29,37 +29,48 @@ TreeNode *CreateTreeNode (Data *data)
 	return node;
 }
 
-void BSTInsertRecurse(TreeNode *root, TreeNode *node)
+void BSTInsertRecurse(TreeNode *root, TreeNode *node, comp_func compare)
 {
 	if (root != NULL) {  
-		if (node->data->key < root->data->key) {
+		/* Compare the Root_key and Node_key */
+		if (compare (root->data->key, node->data->key) == FALSE) {
 			if (root->left == NULL) {
 				root->left = node;
 			} else {
-				BSTInsertRecurse (root->left, node);
+				BSTInsertRecurse (root->left, node, compare);
 			}
-		} else {
+		} else if ((compare (root->data->key, node->data->key) == TRUE) ||
+			   (compare (root->data->key, node->data->key) == EQUAL)) {
 			if (root->right == NULL) {
 				root->right = node;
 			} else {
-				BSTInsertRecurse (root->right, node);
+				BSTInsertRecurse (root->right, node, compare);
 			}
-		}
+		}  
 	}
 }
 
-TreeNode *BSTFindRecurse (TreeNode *root, void *key)
+TreeNode *BSTFindRecurse (TreeNode *root, void *key, comp_func compare)
 {
 	if (root != NULL) {  
-		if (key < root->data->key) {
-			BSTFindRecurse (root->left, key);
-			return root;
+		if (compare (root->data->key, key) == FALSE) {
+			BSTFindRecurse (root->left, key, compare);
+		} else if (compare(root->data->key, key) == TRUE) {
+			BSTFindRecurse (root->right, key, compare);
 		} else {
-			BSTFindRecurse (root->right, key);
-			return root;
+			return root;	
 		}
 	}
 	return NULL;
+}
+
+void InorderTraversal (TreeNode *root)
+{
+	if (root != NULL) {
+		InorderTraversal(root->left);
+		printf ("%d ", *(int *)root->data->key);
+		InorderTraversal(root->right);
+	}
 }
 
 Bool CompareDataSizeAndCheckForKey (BST *tree, void *key)

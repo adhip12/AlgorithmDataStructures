@@ -40,12 +40,12 @@ Bool BSTInsert(BST *tree, void *key, void *val)
 	} 
 
 	// Recurse through Left and Right nodes to insert element.
-	BSTInsertRecurse (tree->root, node);
+	BSTInsertRecurse (tree->root, node, tree->comp_func);
 
 	return TRUE;
 }
 
-TreeNode *BSTFind (BST *tree, void *key, int size)
+TreeNode *BSTFind (BST *tree, void *key)
 {
 	if (tree) {
 		if (tree->root == NULL) {
@@ -57,9 +57,16 @@ TreeNode *BSTFind (BST *tree, void *key, int size)
 	if (CompareDataSizeAndCheckForKey(tree, key) == FALSE) {
 		return NULL;
 	}
-	return BSTFindRecurse(tree->root, key);
+	return BSTFindRecurse(tree->root, key, tree->comp_func);
 
 }
+
+void TreeInorderTraversal (BST *tree)
+{
+	InorderTraversal (tree->root);
+
+}
+
 
 Bool BSTDelete(BST *root, void *key, int size)
 {

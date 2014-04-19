@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <stddef.h>
+#include <stdio.h>
 #include "TreeUtil.h"
 
 typedef Bool (*comp_func) (void *key1, void *key2);
@@ -37,13 +38,16 @@ typedef struct binary_search_tree_t {
 
 Bool BSTInsert (BST *root, void *key, void *val);
 BST *BSTCreateTree (comp_func comp, size_t keySize);
-TreeNode *BSTFind (BST *root, void *key, int size);
+TreeNode *BSTFind (BST *root, void *key);
 Bool BSTDelete (BST *root, void *key, int size);
 void BSTraverse (BST *root, int traverseType);
 
 Bool CompareDataSizeAndCheckForKey(BST *tree, void *key); 
 TreeNode *CreateTreeNode (Data *data); 
 Data *CreateData(void *key, void *val);
-void BSTInsertRecurse(TreeNode *root, TreeNode *node);
-TreeNode *BSTFindRecurse(TreeNode *root, void *key);
+void BSTInsertRecurse(TreeNode *root, TreeNode *node, comp_func compare);
+TreeNode *BSTFindRecurse(TreeNode *root, void *key, comp_func compare);
+
+void InorderTraversal(TreeNode *root);
+void TreeInorderTraversal(BST *tree);
 #endif
