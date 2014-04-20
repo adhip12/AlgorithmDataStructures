@@ -17,24 +17,23 @@ int main()
 	success = BSTInsert (t1, &a[5], (void *)"string 3");
 	success = BSTInsert (t1, &a[6], (void *)"string 3");
 	success = BSTInsert (t1, &a[7], (void *)"string 3");
+
+	/* The Inorder Traversal is a good check to see if the inserts were done in the i
+	 correct manner */
 	TreeInorderTraversal (t1);
-#if 0
+
 	node1 = BSTFind(t1, &find[0]);
 	if (node1) 
-		printf("Found node1\n");
+		printf("Found node1 %d\n", find[0]);
 	else
-		printf("NOt Found node1\n");
+		printf("Not Found node1 %d\n", find[0]);
 	
 	node1 = BSTFind(t1, &find[1]);
 	if (node1) 
-		printf("Found node1\n");
+		printf("Found node1 %d\n", find[1]);
 	else
-		printf("NOt Found node1\n");
-#endif	
-	//success = BSTInsert (t1, 4, 4);
-	//success = BSTInsert (t1, 12, 8);
+		printf("Not Found node1 %d\n", find[1]);
 
-	printf("t1 must be pointing to its root %p", t1);
 
 }
 

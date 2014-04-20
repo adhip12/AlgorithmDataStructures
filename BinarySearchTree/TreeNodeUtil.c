@@ -50,13 +50,13 @@ void BSTInsertRecurse(TreeNode *root, TreeNode *node, comp_func compare)
 	}
 }
 
-TreeNode *BSTFindRecurse (TreeNode *root, void *key, comp_func compare)
+TreeNode *BSTFindElement (TreeNode *root, void *key, comp_func compare)
 {
-	if (root != NULL) {  
+	while (root != NULL) {  
 		if (compare (root->data->key, key) == FALSE) {
-			BSTFindRecurse (root->left, key, compare);
+			root = root->left;
 		} else if (compare(root->data->key, key) == TRUE) {
-			BSTFindRecurse (root->right, key, compare);
+			root = root->right;
 		} else {
 			return root;	
 		}

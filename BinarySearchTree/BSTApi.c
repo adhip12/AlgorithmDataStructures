@@ -57,14 +57,13 @@ TreeNode *BSTFind (BST *tree, void *key)
 	if (CompareDataSizeAndCheckForKey(tree, key) == FALSE) {
 		return NULL;
 	}
-	return BSTFindRecurse(tree->root, key, tree->comp_func);
+	return BSTFindElement(tree->root, key, tree->comp_func);
 
 }
 
 void TreeInorderTraversal (BST *tree)
 {
 	InorderTraversal (tree->root);
-
 }
 
 

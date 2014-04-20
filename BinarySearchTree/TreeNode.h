@@ -46,7 +46,7 @@ Bool CompareDataSizeAndCheckForKey(BST *tree, void *key);
 TreeNode *CreateTreeNode (Data *data); 
 Data *CreateData(void *key, void *val);
 void BSTInsertRecurse(TreeNode *root, TreeNode *node, comp_func compare);
-TreeNode *BSTFindRecurse(TreeNode *root, void *key, comp_func compare);
+TreeNode *BSTFindElement(TreeNode *root, void *key, comp_func compare);
 
 void InorderTraversal(TreeNode *root);
 void TreeInorderTraversal(BST *tree);
